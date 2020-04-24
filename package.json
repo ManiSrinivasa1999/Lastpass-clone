@@ -1,0 +1,23 @@
+{
+  "name": "lastpass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/assets/js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/manisrinivasa/lastpass.git"
+  },
+  "author": "Manisrinivasa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/manisrinivasa/lastpass/issues"
+  },
+  "homepage": "https://gitlab.com/manisrinivasa/lastpass#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
