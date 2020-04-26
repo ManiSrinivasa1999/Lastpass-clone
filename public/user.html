@@ -7,8 +7,220 @@
     <link rel="stylesheet" href="./assets/css/user.css">
     <title>Lastpass</title>
   </head>
-  <body>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&family=Righteous&display=swap" rel="stylesheet">
+  <body class="container is-fluid">
+    <div class="columns">
+      <div class="column is-2" id="side-navbar">
+        <aside class="menu" id="side-navbar-list">
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+              </span>
+              <span>
+                Collapse
+              </span>
+            </button>
+          </div>
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <span>
+                All Items
+              </span>
+            </button>
+          </div>
+          <a href="#password-display" class="menu-list">
+            <button class="button button-color" id="password">
+              <span class="icon">
+                <i class="fas fa-lock"></i>
+              </span>
+              <span>
+                Passwords
+              </span>
+            </button>
+          </a>
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-sticky-note"></i>
+              </span>
+              <span>
+                Notes
+              </span>
+            </button>
+          </div>
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-address-book"></i>
+              </span>
+              <span>
+                Addresses
+              </span>
+            </button>            
+          </div>
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-credit-card"></i>
+              </span>
+              <span>
+                Payment cards
+              </span>
+            </button>
+          </div>
+          <div class="menu-list">
+            <button class="button button-color">
+              <span class="icon">
+                <i class="fas fa-university"></i>
+              </span>
+              <span>
+                Bank Accounts
+              </span>
+            </button>
+          </div>
+        </aside>
+      </div>
+      <div class="column is-10">
+        <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <div class="navbar-item">
+              <h3 class="is-size-3">Lastpass...</h3>
+            </div>
+          </div>        
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <div class="navbar-item">
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Search">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </div>
+              </div>
+            </div>        
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="dropdown is-right" id="settings-menu">
+                  <div class="dropdown-trigger">
+                    <figure class="image is-48x48">
+                      <img class="is-rounded"  id="profile-picture" src="https://bulma.io/images/placeholders/48x48.png">
+                    </figure>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item" id="user-name">
+                        Username
+                      </div>
+                      <hr class="dropdown-divider">
+                      <div class="dropdown-item" id="email-id">
+                        Email
+                      </div>
+                      <hr class="dropdown-divider">
+                      <a class="dropdown-item" id="logout">
+                        Logout
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <section class="hero">
+          <div class="hero-body">
+            <div class="columns">
+              <div class="column is-9" id="password-display">
+                <button class="icon has-text-danger" id="add-password">
+                  <i class="fas fa-3x fa-plus-circle"></i>
+                </button>
+              </div>
+              <div class="column is-3"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal" id="password-content">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head is-danger">
+            <p class="modal-card-title has-text-centered">
+              Add password
+            </p>
+          </header>
+          <section class="modal-card-body">
+            <form class="table-container" id="saved-password-form">
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field is-expanded">
+                    <div class="field">
+                      <label class="label">URL:</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="" id="url-input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field">
+                    <label class="label">Name:</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="" id="name-input">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field">
+                    <label class="label">Username:</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="" id="username-input">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Site Password</label>
+                    <div class="control">
+                      <input class="input" type="password" placeholder="" id="password-input">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field is-expanded">
+                    <div class="field">
+                      <label class="label">Notes:</label>
+                      <div class="control">
+                        <textarea class="textarea" placeholder="" id="notes-input"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="field is-grouped is-grouped-right">
+              <p class="control">
+                <button class="button is-success" id="save-password">
+                  Save
+                </button>
+              </p>
+              <p class="control">
+                <button class="button is-danger" id="close-modal">
+                  Cancel
+                </button>
+              </p>
+            </div>
+          </section>
+          <footer class="modal-card-foot">
+          </footer>
+        </div>
+      </div>
+    </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>

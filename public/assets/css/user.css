@@ -1,0 +1,52 @@
+#side-navbar {
+  background-color: #3C5A54;
+  overflow: auto;
+  color: #88959E;
+  font-weight: 600;
+}
+
+.menu-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#side-navbar-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-color {
+  background-color: #3C5A54 !important;
+  border: none !important;
+  font-size: 20px !important;
+  outline: none !important;
+}
+
+#profile-picture {
+  max-width: 48px !important;
+  max-height: 48px !important;
+}
+
+#password-display {
+  height: 100vmin !important;
+  width: 60vmax !important;
+}
+
+#add-password {
+  border: none !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 95vmin 30px 0 75vmax !important;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: end;
+}
