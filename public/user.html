@@ -133,6 +133,14 @@
           <div class="hero-body">
             <div class="columns">
               <div class="column is-9" id="password-display">
+                <div class="columns" id="password-display-list">
+                  <div class="column is-4">
+                  </div>
+                  <div class="column is-4">
+                  </div>
+                  <div class="column is-4">
+                  </div>
+                </div>
                 <button class="icon has-text-danger" id="add-password">
                   <i class="fas fa-3x fa-plus-circle"></i>
                 </button>
@@ -157,20 +165,48 @@
                   <div class="field is-expanded">
                     <div class="field">
                       <label class="label">URL:</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="" id="url-input">
+                      <div class="control has-icons-left has-icons-right">
+                        <input 
+                          class="input" 
+                          type="text" 
+                          placeholder="" 
+                          id="url-input"
+                        >
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-link"></i>
+                        </span>
+                        <span id="url-input-icon" class="icon is-small is-right">
+                        </span>
                       </div>
                     </div>
+                    <p id="url-input-help" class="help">
+                      Fill the url
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="field is-horizontal">
                 <div class="field-body">
-                  <div class="field">
-                    <label class="label">Name:</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="" id="name-input">
+                  <div class="field is-expanded">
+                    <div class="field">
+                      <label class="label">Name:</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input 
+                          class="input" 
+                          type="text" 
+                          placeholder="" 
+                          id="name-input"
+                        >
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-file-signature"></i>
+                        </span>
+                        <span id="name-input-icon" class="icon is-small is-right">
+                        </span>
+                      </div>
                     </div>
+                    <p id="name-input-help" class="help">
+                      Fill the Name
+                    </p>
                   </div>
                 </div>
               </div>
@@ -178,15 +214,41 @@
                 <div class="field-body">
                   <div class="field">
                     <label class="label">Username:</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="" id="username-input">
+                    <div class="control has-icons-left has-icons-right">
+                      <input 
+                        class="input" 
+                        type="text" 
+                        placeholder="" 
+                        id="username-input"
+                      >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span id="username-input-icon" class="icon is-small is-right">
+                      </span>
                     </div>
+                    <p id="username-input-help" class="help">
+                      Fill the Userame
+                    </p>
                   </div>
                   <div class="field">
                     <label class="label">Site Password</label>
-                    <div class="control">
-                      <input class="input" type="password" placeholder="" id="password-input">
+                    <div class="control has-icons-left has-icons-right">
+                      <input 
+                        class="input" 
+                        type="password" 
+                        placeholder="" 
+                        id="password-input"
+                      >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-unlock"></i>
+                      </span>
+                      <span id="password-input-icon" class="icon is-small is-right">
+                      </span>
                     </div>
+                    <p id="password-input-help" class="help">
+                      Fill the Userame
+                    </p>
                   </div>
                 </div>
               </div>
@@ -196,9 +258,16 @@
                     <div class="field">
                       <label class="label">Notes:</label>
                       <div class="control">
-                        <textarea class="textarea" placeholder="" id="notes-input"></textarea>
+                        <textarea 
+                          class="textarea" 
+                          placeholder="" 
+                          id="notes-input"
+                        ></textarea>
                       </div>
                     </div>
+                    <p id="notes-input-help" class="help">
+                      Fill the Notes
+                    </p>
                   </div>
                 </div>
               </div>

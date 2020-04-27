@@ -50,3 +50,7 @@
   align-self: flex-end;
   justify-content: end;
 }
+
+.launch-button {
+  display: none !important;
+}
