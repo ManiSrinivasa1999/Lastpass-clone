@@ -9,7 +9,9 @@ import {firebaseConfig} from './config.js';
       const logout = document.getElementById('logout');
       const addPassword = document.getElementById('add-password');
       const passwordContent = document.getElementById('password-content');
-      const passwordDisplay = document.getElementById('password-display-list');
+      const passwordDisplayList1 = document.getElementById('password-display-list1');
+      const passwordDisplayList2 = document.getElementById('password-display-list2');
+      const passwordDisplayList3 = document.getElementById('password-display-list3');
       const closeModal = document.getElementById('close-modal');
       const urlInput = document.getElementById('url-input');
       const urlInputIcon = document.getElementById('url-input-icon');
@@ -26,6 +28,8 @@ import {firebaseConfig} from './config.js';
       const notesInput = document.getElementById('notes-input');
       const notesInputHelp = document.getElementById('notes-input-help');
       const savePassword = document.getElementById('save-password');
+      // const editPassword = document.getElementById('edit-password');
+      // const deletePassword = document.getElementById('delete-password');
       const model = {
         user: { },
         password: {
@@ -39,6 +43,9 @@ import {firebaseConfig} from './config.js';
       };
       const view = {
         init: () => {
+          // deletePassword.onclick = () => {
+          //   controller.deletePassword(model.password.id);
+          // },
           savePassword.onclick = () => {
             controller.savePasswords();
           },
@@ -79,50 +86,71 @@ import {firebaseConfig} from './config.js';
       };
       const displayView = {
         init: () => {
-          displayView.render();
         },
         render: () => {
-          passwordDisplay.innerHTML = ``;
+          passwordDisplayList1.innerHTML = ``;
+          passwordDisplayList2.innerHTML = ``;
+          passwordDisplayList3.innerHTML = ``;
           model.passwords.forEach((password) => {
-            passwordDisplay.innerHTML = `
-              <div class="card">
-                <div class="card-content">
-                  <div class="launch-button" id="launch-button">
-                    <button class="button is-large is-link">
-                      Launch
-                    </button>
-                  </div>
-                  <p class="title">
-                    ${password.name}
-                  </p>
-                  <p class="subtitle">
-                    ${password.username}
-                  </p>
-                </div>
-                <footer class="card-footer">
-                  <p class="card-footer-item">
-                    <button class="button is-info" id="edit-password">
-                      <span class="icon">
-                        <i class="fas fa-edit"></i>
-                      </span>
-                      <span>
-                        Edit
-                      </span>
-                    </button>
-                  </p>
-                  <p class="card-footer-item">
-                    <button class="button is-danger" id="delete-password">
-                      <span class="icon">
-                        <i class="fas fa-trash"></i>
-                      </span>
-                      <span>
-                        Delete
-                      </span>
-                    </button>
-                  </p>
-                </footer>
-              </div>
+            const card = document.createElement('div');
+            card.classList.add('card');
+            const cardContent = document.createElement('div');
+            cardContent.classList.add('card-content');
+            cardContent.innerHTML = `
+              <p class="title">
+                ${password.name}
+              </p>
+              <p class="subtitle">
+                ${password.username}
+              </p>
               `;
+            const launchButton = document.createElement('button');
+            launchButton.classList.add('launch-button');
+            cardContent.appendChild(launchButton);
+            const footer = document.createElement('footer');
+            footer.classList.add('card-footer');
+            const buttonTagEdit = document.createElement('p');
+            buttonTagEdit.classList.add('card-footer-item');
+            const editButton = document.createElement('button');
+            editButton.classList.add('button', 'is-info');
+            editButton.innerHTML = `
+              <span class="icon">
+                <i class="fas fa-edit"></i>
+              </span>
+              <span>
+                Edit
+              </span>
+            `;
+            const buttonTagDelete = document.createElement('p');
+            buttonTagDelete.classList.add('card-footer-item');
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('button', 'is-danger');
+            deleteButton.innerHTML = `
+              <span class="icon">
+                <i class="fas fa-trash"></i>
+              </span>
+              <span>
+                Delete
+              </span>
+            `;
+            for (let i = 0; i < model.passwords.length; i += 1) {
+              deleteButton.onclick = () => {
+                controller.deletePassword(model.passwords[i].id);
+              };
+            }
+            buttonTagEdit.appendChild(editButton);
+            buttonTagDelete.appendChild(deleteButton);
+            footer.appendChild(buttonTagEdit);
+            footer.appendChild(buttonTagDelete);
+            card.appendChild(cardContent);
+            card.appendChild(footer);
+            if (model.passwords.length <= 10) {
+              passwordDisplayList1.appendChild(card);
+            } else if (10 < model.passwords.length <=20) {
+              passwordDisplayList2.appendChild(card);
+            } else {
+              passwordDisplayList3.appendChild(card);
+            }
           });
         },
       };
@@ -368,6 +396,17 @@ import {firebaseConfig} from './config.js';
               `;
           view.init();
         },
+        deletePassword: (id) => {
+          db.collection('storePassword')
+              .doc(id)
+              .delete()
+              .then(() => {
+                alert('Succesfully deleted password');
+              })
+              .catch(() => {
+                alert('Failed to delete password');
+              });
+        },
         savePasswords: () => {
           if (controller.validateAll()) {
             db.collection('storePassword').add({
@@ -397,7 +436,7 @@ import {firebaseConfig} from './config.js';
         },
         setPassword: (passwords) => {
           model.passwords = passwords;
-          displayView.init();
+          displayView.render();
         },
         init: () => {
           db.collection('storePassword').onSnapshot(
