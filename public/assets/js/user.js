@@ -40,6 +40,7 @@ import {firebaseConfig} from './config.js';
           notes: '',
         },
         passwords: [],
+        passwordID: null,
       };
       const view = {
         init: () => {
@@ -105,7 +106,15 @@ import {firebaseConfig} from './config.js';
               </p>
               `;
             const launchButton = document.createElement('button');
-            launchButton.classList.add('launch-button');
+            launchButton.classList.add('launch-button', 'is-info', 'button');
+            launchButton.innerHTML = `
+              <span class="icon">
+                <i class="fas fa-link"></i>
+              </span>
+              <span>
+                Launch
+              </span>
+            `;
             cardContent.appendChild(launchButton);
             const footer = document.createElement('footer');
             footer.classList.add('card-footer');
@@ -121,6 +130,11 @@ import {firebaseConfig} from './config.js';
                 Edit
               </span>
             `;
+            for (let i = 0; i < model.passwords.length; i += 1) {
+              editButton.onclick = () => {
+                controller.editPassword(model.passwords[i].id, model.passwords[i]);
+              };
+            }
             const buttonTagDelete = document.createElement('p');
             buttonTagDelete.classList.add('card-footer-item');
             const deleteButton = document.createElement('button');
@@ -151,6 +165,15 @@ import {firebaseConfig} from './config.js';
             } else {
               passwordDisplayList3.appendChild(card);
             }
+            card.onmouseover = () => {
+              launchButton.classList.remove('launch-button');
+            };
+            card.onmouseout = () => {
+              launchButton.classList.add('launch-button');
+            };
+            launchButton.onclick = () => {
+              controller.launchWebsite();
+            };
           });
         },
       };
@@ -396,12 +419,28 @@ import {firebaseConfig} from './config.js';
               `;
           view.init();
         },
+        editPassword: (passwordID, password) => {
+          model.passwordID = passwordID;
+          model.password = password;
+          controller.updatePassword();
+        },
+        updatePassword: () => {
+          passwordContent.classList.add('is-active');
+          for (let i = 0; i < model.passwords.length; i += 1) {
+            urlInput.value = model.passwords[i].url;
+            nameInput.value = model.passwords[i].name;
+            userNameInput.value = model.passwords[i].username;
+            passwordInput.value = model.passwords[i].sitePassword;
+            notesInput.value = model.passwords[i].notes;
+            savePassword.innerHTML = `Update`;
+          }
+          view.init();
+        },
         deletePassword: (id) => {
           db.collection('storePassword')
               .doc(id)
               .delete()
               .then(() => {
-                alert('Succesfully deleted password');
               })
               .catch(() => {
                 alert('Failed to delete password');
@@ -426,6 +465,12 @@ import {firebaseConfig} from './config.js';
             alert('Fill all areas');
           }
           controller.resetForm();
+          passwordContent.classList.remove('is-active');
+        },
+        launchWebsite: () => {
+          for (let i = 0; i < model.passwords.length; i += 1) {
+            window.open(`${model.passwords[i].url}`, '_blank');
+          }
         },
         logout: () => {
           firebase.auth().signOut();
