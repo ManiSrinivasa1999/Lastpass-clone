@@ -7,29 +7,6 @@ import {firebaseConfig} from './config.js';
       const emailId = document.getElementById('email-id');
       const settingsMenu = document.getElementById('settings-menu');
       const logout = document.getElementById('logout');
-      const addPassword = document.getElementById('add-password');
-      const passwordContent = document.getElementById('password-content');
-      const passwordDisplayList1 = document.getElementById('password-display-list1');
-      const passwordDisplayList2 = document.getElementById('password-display-list2');
-      const passwordDisplayList3 = document.getElementById('password-display-list3');
-      const closeModal = document.getElementById('close-modal');
-      const urlInput = document.getElementById('url-input');
-      const urlInputIcon = document.getElementById('url-input-icon');
-      const urlInputHelp = document.getElementById('url-input-help');
-      const nameInput = document.getElementById('name-input');
-      const nameInputIcon = document.getElementById('name-input-icon');
-      const nameInputHelp = document.getElementById('name-input-help');
-      const userNameInput = document.getElementById('username-input');
-      const userNameInputIcon = document.getElementById('username-input-icon');
-      const userNameInputHelp = document.getElementById('username-input-help');
-      const passwordInput = document.getElementById('password-input');
-      const passwordInputIcon = document.getElementById('password-input-icon');
-      const passwordInputHelp = document.getElementById('password-input-help');
-      const notesInput = document.getElementById('notes-input');
-      const notesInputHelp = document.getElementById('notes-input-help');
-      const savePassword = document.getElementById('save-password');
-      // const editPassword = document.getElementById('edit-password');
-      // const deletePassword = document.getElementById('delete-password');
       const model = {
         user: { },
         password: {
@@ -43,33 +20,46 @@ import {firebaseConfig} from './config.js';
         passwordID: null,
       };
       const view = {
+        addPassword: document.getElementById('add-password'),
+        passwordContent: document.getElementById('password-content'),
+        closeModal: document.getElementById('close-modal'),
+        urlInput: document.getElementById('url-input'),
+        urlInputIcon: document.getElementById('url-input-icon'),
+        urlInputHelp: document.getElementById('url-input-help'),
+        nameInput: document.getElementById('name-input'),
+        nameInputIcon: document.getElementById('name-input-icon'),
+        nameInputHelp: document.getElementById('name-input-help'),
+        userNameInput: document.getElementById('username-input'),
+        userNameInputIcon: document.getElementById('username-input-icon'),
+        userNameInputHelp: document.getElementById('username-input-help'),
+        passwordInput: document.getElementById('password-input'),
+        passwordInputIcon: document.getElementById('password-input-icon'),
+        passwordInputHelp: document.getElementById('password-input-help'),
+        notesInput: document.getElementById('notes-input'),
+        notesInputHelp: document.getElementById('notes-input-help'),
+        savePassword: document.getElementById('save-password'),
         init: () => {
-          // deletePassword.onclick = () => {
-          //   controller.deletePassword(model.password.id);
-          // },
-          savePassword.onclick = () => {
-            controller.savePasswords();
+          view.urlInput.oninput = () => {
+            controller.handleUrlInput(view.urlInput.value);
           },
-          urlInput.oninput = () => {
-            controller.handleUrlInput(urlInput.value);
+          view.nameInput.oninput = () => {
+            controller.handleNameInput(view.nameInput.value);
           },
-          nameInput.oninput = () => {
-            controller.handleNameInput(nameInput.value);
+          view.userNameInput.oninput = () => {
+            controller.handleUserNameInput(view.userNameInput.value);
           },
-          userNameInput.oninput = () => {
-            controller.handleUserNameInput(userNameInput.value);
+          view.passwordInput.oninput = () => {
+            controller.handlePasswordInput(view.passwordInput.value);
           },
-          passwordInput.oninput = () => {
-            controller.handlePasswordInput(passwordInput.value);
+          view.notesInput.oninput = () => {
+            controller.handleNotesInput(view.notesInput.value);
           },
-          notesInput.oninput = () => {
-            controller.handleNotesInput(notesInput.value);
+          view.addPassword.onclick = () => {
+            view.passwordContent.classList.add('is-active');
           },
-          addPassword.onclick = () => {
-            passwordContent.classList.add('is-active');
-          },
-          closeModal.onclick = () => {
-            passwordContent.classList.remove('is-active');
+          view.closeModal.onclick = () => {
+            view.passwordContent.classList.remove('is-active');
+            controller.resetForm();
           },
           settingsMenu.onclick = () => {
             settingsMenu.classList.toggle('is-active');
@@ -77,6 +67,7 @@ import {firebaseConfig} from './config.js';
           logout.onclick = () => {
             controller.logout();
           },
+          view.savePassword.onclick = controller.savePasswords;
           view.render();
         },
         render: () => {
@@ -86,12 +77,15 @@ import {firebaseConfig} from './config.js';
         },
       };
       const displayView = {
+        passwordDisplayList1: document.getElementById('password-display-list1'),
+        passwordDisplayList2: document.getElementById('password-display-list2'),
+        passwordDisplayList3: document.getElementById('password-display-list3'),
         init: () => {
         },
         render: () => {
-          passwordDisplayList1.innerHTML = ``;
-          passwordDisplayList2.innerHTML = ``;
-          passwordDisplayList3.innerHTML = ``;
+          displayView.passwordDisplayList1.innerHTML = ``;
+          displayView.passwordDisplayList2.innerHTML = ``;
+          displayView.passwordDisplayList3.innerHTML = ``;
           model.passwords.forEach((password) => {
             const card = document.createElement('div');
             card.classList.add('card');
@@ -130,11 +124,9 @@ import {firebaseConfig} from './config.js';
                 Edit
               </span>
             `;
-            for (let i = 0; i < model.passwords.length; i += 1) {
-              editButton.onclick = () => {
-                controller.editPassword(model.passwords[i].id, model.passwords[i]);
-              };
-            }
+            editButton.onclick = () => {
+              updateController.editPassword(password.id, password);
+            };
             const buttonTagDelete = document.createElement('p');
             buttonTagDelete.classList.add('card-footer-item');
             const deleteButton = document.createElement('button');
@@ -147,11 +139,9 @@ import {firebaseConfig} from './config.js';
                 Delete
               </span>
             `;
-            for (let i = 0; i < model.passwords.length; i += 1) {
-              deleteButton.onclick = () => {
-                controller.deletePassword(model.passwords[i].id);
-              };
-            }
+            deleteButton.onclick = () => {
+              updateController.deletePassword(password.id);
+            };
             buttonTagEdit.appendChild(editButton);
             buttonTagDelete.appendChild(deleteButton);
             footer.appendChild(buttonTagEdit);
@@ -159,11 +149,11 @@ import {firebaseConfig} from './config.js';
             card.appendChild(cardContent);
             card.appendChild(footer);
             if (model.passwords.length <= 10) {
-              passwordDisplayList1.appendChild(card);
+              displayView.passwordDisplayList1.appendChild(card);
             } else if (10 < model.passwords.length <=20) {
-              passwordDisplayList2.appendChild(card);
+              displayView.passwordDisplayList2.appendChild(card);
             } else {
-              passwordDisplayList3.appendChild(card);
+              displayView.passwordDisplayList3.appendChild(card);
             }
             card.onmouseover = () => {
               launchButton.classList.remove('launch-button');
@@ -172,7 +162,7 @@ import {firebaseConfig} from './config.js';
               launchButton.classList.add('launch-button');
             };
             launchButton.onclick = () => {
-              controller.launchWebsite();
+              updateController.launchWebsite(password.id, password);
             };
           });
         },
@@ -180,93 +170,93 @@ import {firebaseConfig} from './config.js';
       const controller = {
         handleNotesInput: (name) => {
           if (controller.validateNotes(name)) {
-            notesInput.classList.add('is-success');
-            notesInput.classList.remove('is-danger');
-            notesInputHelp.classList.add('is-success');
-            notesInputHelp.classList.remove('is-danger');
-            notesInputHelp.innerHTML = `Notes sounds good`;
+            view.notesInput.classList.add('is-success');
+            view.notesInput.classList.remove('is-danger');
+            view.notesInputHelp.classList.add('is-success');
+            view.notesInputHelp.classList.remove('is-danger');
+            view.notesInputHelp.innerHTML = `Notes sounds good`;
           } else {
-            notesInput.classList.remove('is-success');
-            notesInput.classList.add('is-danger');
-            notesInputHelp.classList.remove('is-success');
-            notesInputHelp.classList.add('is-danger');
-            notesInputHelp.innerHTML = `Fill valid notes`;
+            view.notesInput.classList.remove('is-success');
+            view.notesInput.classList.add('is-danger');
+            view.notesInputHelp.classList.remove('is-success');
+            view.notesInputHelp.classList.add('is-danger');
+            view.notesInputHelp.innerHTML = `Fill valid notes`;
           }
         },
         handlePasswordInput: (name) => {
           if (controller.validatePassword(name)) {
-            passwordInput.classList.add('is-success');
-            passwordInput.classList.remove('is-danger');
-            passwordInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
-            passwordInputHelp.classList.add('is-success');
-            passwordInputHelp.classList.remove('is-danger');
-            passwordInputHelp.innerHTML = `Password is valid`;
+            view.passwordInput.classList.add('is-success');
+            view.passwordInput.classList.remove('is-danger');
+            view.passwordInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
+            view.passwordInputHelp.classList.add('is-success');
+            view.passwordInputHelp.classList.remove('is-danger');
+            view.passwordInputHelp.innerHTML = `Password is valid`;
           } else {
-            passwordInput.classList.remove('is-success');
-            passwordInput.classList.add('is-danger');
-            passwordInputIcon.innerHTML = `
+            view.passwordInput.classList.remove('is-success');
+            view.passwordInput.classList.add('is-danger');
+            view.passwordInputIcon.innerHTML = `
               <i class="fas fa-exclamation-triangle"></i>
               `;
-            passwordInputHelp.classList.remove('is-success');
-            passwordInputHelp.classList.add('is-danger');
-            passwordInputHelp.innerHTML = `Fill a Valid Password`;
+            view.passwordInputHelp.classList.remove('is-success');
+            view.passwordInputHelp.classList.add('is-danger');
+            view.passwordInputHelp.innerHTML = `Fill a Valid Password`;
           }
         },
         handleUserNameInput: (name) => {
           if (controller.validateUserName(name)) {
-            userNameInput.classList.remove('is-danger');
-            userNameInput.classList.add('is-success');
-            userNameInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
-            userNameInputHelp.classList.add('is-success');
-            userNameInputHelp.classList.remove('is-danger');
-            userNameInputHelp.innerHTML = `Username is valid`;
+            view.userNameInput.classList.remove('is-danger');
+            view.userNameInput.classList.add('is-success');
+            view.userNameInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
+            view.userNameInputHelp.classList.add('is-success');
+            view.userNameInputHelp.classList.remove('is-danger');
+            view.userNameInputHelp.innerHTML = `Username is valid`;
           } else {
-            userNameInput.classList.remove('is-success');
-            userNameInput.classList.add('is-danger');
-            userNameInputIcon.innerHTML = `
+            view.userNameInput.classList.remove('is-success');
+            view.userNameInput.classList.add('is-danger');
+            view.userNameInputIcon.innerHTML = `
               <i class="fas fa-exclamation-triangle"></i>
               `;
-            userNameInputHelp.classList.remove('is-success');
-            userNameInputHelp.classList.add('is-danger');
-            userNameInputHelp.innerHTML = `Fill a Valid Username`;
+            view.userNameInputHelp.classList.remove('is-success');
+            view.userNameInputHelp.classList.add('is-danger');
+            view.userNameInputHelp.innerHTML = `Fill a Valid Username`;
           }
         },
         handleNameInput: (name) => {
           if (controller.validateName(name)) {
-            nameInput.classList.remove('is-danger');
-            nameInput.classList.add('is-success');
-            nameInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
-            nameInputHelp.classList.add('is-success');
-            nameInputHelp.classList.remove('is-danger');
-            nameInputHelp.innerHTML = `Name is valid`;
+            view.nameInput.classList.remove('is-danger');
+            view.nameInput.classList.add('is-success');
+            view.nameInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
+            view.nameInputHelp.classList.add('is-success');
+            view.nameInputHelp.classList.remove('is-danger');
+            view.nameInputHelp.innerHTML = `Name is valid`;
           } else {
-            nameInput.classList.remove('is-success');
-            nameInput.classList.add('is-danger');
-            nameInputIcon.innerHTML = `
+            view.nameInput.classList.remove('is-success');
+            view.nameInput.classList.add('is-danger');
+            view.nameInputIcon.innerHTML = `
               <i class="fas fa-exclamation-triangle"></i>
             `;
-            nameInputHelp.classList.remove('is-success');
-            nameInputHelp.classList.add('is-danger');
-            nameInputHelp.innerHTML = `Fill a valid name`;
+            view.nameInputHelp.classList.remove('is-success');
+            view.nameInputHelp.classList.add('is-danger');
+            view.nameInputHelp.innerHTML = `Fill a valid name`;
           }
         },
         handleUrlInput: (name) => {
           if (controller.validateUrl(name)) {
-            urlInput.classList.add('is-success');
-            urlInput.classList.remove('is-danger');
-            urlInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
-            urlInputHelp.classList.add('is-success');
-            urlInputHelp.classList.remove('is-danger');
-            urlInputHelp.innerHTML = `Url is valid`;
+            view.urlInput.classList.add('is-success');
+            view.urlInput.classList.remove('is-danger');
+            view.urlInputIcon.innerHTML = `<i class="fas fa-check"></i>`;
+            view.urlInputHelp.classList.add('is-success');
+            view.urlInputHelp.classList.remove('is-danger');
+            view.urlInputHelp.innerHTML = `Url is valid`;
           } else {
-            urlInput.classList.remove('is-success');
-            urlInput.classList.add('is-danger');
-            urlInputIcon.innerHTML = `
+            view.urlInput.classList.remove('is-success');
+            view.urlInput.classList.add('is-danger');
+            view.urlInputIcon.innerHTML = `
               <i class="fas fa-exclamation-triangle"></i>
               `;
-            urlInputHelp.classList.remove('is-success');
-            urlInputHelp.classList.add('is-danger');
-            urlInputHelp.innerHTML = `Fill a valid Url`;
+            view.urlInputHelp.classList.remove('is-success');
+            view.urlInputHelp.classList.add('is-danger');
+            view.urlInputHelp.innerHTML = `Fill a valid Url`;
           }
         },
         validateNotes: (name) => {
@@ -285,18 +275,13 @@ import {firebaseConfig} from './config.js';
           return name.length > 10;
         },
         validateAll: () => {
-          return controller.validateUrl(urlInput.value) &&
-          controller.validateName(nameInput.value) &&
-          controller.validateUserName(userNameInput.value) &&
-          controller.validatePassword(passwordInput.value) &&
-          controller.validateNotes(notesInput.value);
+          return controller.validateUrl(view.urlInput.value) &&
+          controller.validateName(view.nameInput.value) &&
+          controller.validateUserName(view.userNameInput.value) &&
+          controller.validatePassword(view.passwordInput.value) &&
+          controller.validateNotes(view.notesInput.value);
         },
         resetForm: () => {
-          urlInput.value = '';
-          nameInput.value = '';
-          userNameInput.value = '';
-          passwordInput.value = '';
-          notesInput.value = '';
           const passwordForm = document.getElementById('saved-password-form');
           passwordForm.innerHTML =`
             <div class="field is-horizontal">
@@ -392,7 +377,7 @@ import {firebaseConfig} from './config.js';
                     </span>
                   </div>
                   <p id="password-input-help" class="help">
-                    Fill the Userame
+                    Fill the Password
                   </p>
                 </div>
               </div>
@@ -417,24 +402,111 @@ import {firebaseConfig} from './config.js';
               </div>
             </div>
               `;
+          view.addPassword = document.getElementById('add-password');
+          view.passwordContent = document.getElementById('password-content');
+          view.closeModal = document.getElementById('close-modal');
+          view.urlInput = document.getElementById('url-input');
+          view.urlInputIcon = document.getElementById('url-input-icon');
+          view.urlInputHelp = document.getElementById('url-input-help');
+          view.nameInput = document.getElementById('name-input');
+          view.nameInputIcon = document.getElementById('name-input-icon');
+          view.nameInputHelp = document.getElementById('name-input-help');
+          view.userNameInput = document.getElementById('username-input');
+          view.userNameInputIcon = document.getElementById(
+              'username-input-icon');
+          view.userNameInputHelp = document.getElementById(
+              'username-input-help');
+          view.passwordInput = document.getElementById('password-input');
+          view.passwordInputIcon = document.getElementById(
+              'password-input-icon');
+          view.passwordInputHelp = document.getElementById(
+              'password-input-help');
+          view.notesInput = document.getElementById('notes-input');
+          view.notesInputHelp = document.getElementById('notes-input-help');
+          view.savePassword = document.getElementById('save-password');
+          view.savePassword.innerText = `Save`;
           view.init();
+        },
+        updatePassword: () => {
+          view.passwordContent.classList.add('is-active');
+          view.urlInput.value = model.password.url;
+          view.nameInput.value = model.password.name;
+          view.userNameInput.value = model.password.username;
+          view.passwordInput.value = model.password.sitePassword;
+          view.notesInput.value = model.password.notes;
+          view.savePassword.innerHTML = `Update`;
+          controller.handleUrlInput(view.urlInput.value);
+          controller.handleUserNameInput(view.userNameInput.value);
+          controller.handleNameInput(view.nameInput.value);
+          controller.handlePasswordInput(view.passwordInput.value);
+          controller.handleNotesInput(view.notesInput.value);
+          view.savePassword.onclick = () => {
+            updateController.updatePasswordInDb();
+          };
+        },
+        savePasswords: () => {
+          if (!(controller.validateAll())) {
+            alert('Fill all areas');
+          }
+          db.collection('storePassword').add({
+            url: view.urlInput.value,
+            name: view.nameInput.value,
+            username: view.userNameInput.value,
+            sitePassword: view.passwordInput.value,
+            notes: view.notesInput.value,
+          })
+              .then(() => {
+                controller.resetForm();
+                model.productID = null;
+              })
+              .catch((err) => {
+                alert('please try later');
+              });
+          view.passwordContent.classList.remove('is-active');
+        },
+        launchRespectiveSite: () => {
+          window.open(`${model.password.url}`, '_blank');
+        },
+        logout: () => {
+          firebase.auth().signOut();
+        },
+        setUser: (user) => {
+          model.user = user;
+          view.render();
+        },
+        init: () => {
+          view.init();
+        },
+      };
+      const updateController = {
+        updatePasswordInDb: () => {
+          db.collection('storePassword')
+              .doc(model.passwordID)
+              .update({
+                url: view.urlInput.value,
+                name: view.nameInput.value,
+                username: view.userNameInput.value,
+                sitePassword: view.passwordInput.value,
+                notes: view.notesInput.value,
+              })
+              .then(() => {
+                controller.resetForm();
+                model.productID = null;
+              })
+              .catch((err) => {
+                alert('please try later');
+              });
+          view.passwordContent.classList.remove('is-active');
+        },
+        launchWebsite: (passwordID, password) => {
+          model.passwordID = passwordID;
+          model.password = password;
+          controller.launchRespectiveSite();
         },
         editPassword: (passwordID, password) => {
           model.passwordID = passwordID;
           model.password = password;
           controller.updatePassword();
-        },
-        updatePassword: () => {
-          passwordContent.classList.add('is-active');
-          for (let i = 0; i < model.passwords.length; i += 1) {
-            urlInput.value = model.passwords[i].url;
-            nameInput.value = model.passwords[i].name;
-            userNameInput.value = model.passwords[i].username;
-            passwordInput.value = model.passwords[i].sitePassword;
-            notesInput.value = model.passwords[i].notes;
-            savePassword.innerHTML = `Update`;
-          }
-          view.init();
         },
         deletePassword: (id) => {
           db.collection('storePassword')
@@ -445,39 +517,6 @@ import {firebaseConfig} from './config.js';
               .catch(() => {
                 alert('Failed to delete password');
               });
-        },
-        savePasswords: () => {
-          if (controller.validateAll()) {
-            db.collection('storePassword').add({
-              url: urlInput.value,
-              name: nameInput.value,
-              username: userNameInput.value,
-              sitePassword: passwordInput.value,
-              notes: notesInput.value,
-              time: new Date(),
-            })
-                .then(() => {
-                })
-                .catch((err) => {
-                  alert('please try later');
-                });
-          } else {
-            alert('Fill all areas');
-          }
-          controller.resetForm();
-          passwordContent.classList.remove('is-active');
-        },
-        launchWebsite: () => {
-          for (let i = 0; i < model.passwords.length; i += 1) {
-            window.open(`${model.passwords[i].url}`, '_blank');
-          }
-        },
-        logout: () => {
-          firebase.auth().signOut();
-        },
-        setUser: (user) => {
-          model.user = user;
-          view.render();
         },
         setPassword: (passwords) => {
           model.passwords = passwords;
@@ -494,15 +533,11 @@ import {firebaseConfig} from './config.js';
                     passwords.push(password);
                   }
                 });
-                passwords.sort((task1, task2)=>{
-                  return task1.time.seconds-task2.time.seconds;
-                });
-                controller.setPassword(passwords);
+                updateController.setPassword(passwords);
               },
               (err) => {
                 alert(err);
               });
-          view.init();
         },
       };
       firebase.initializeApp(firebaseConfig);
@@ -511,6 +546,7 @@ import {firebaseConfig} from './config.js';
         if (user) {
           controller.init();
           controller.setUser(user);
+          updateController.init();
         } else {
           window.location.href = './index.html';
         }

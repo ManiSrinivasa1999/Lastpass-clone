@@ -1,58 +1,113 @@
-[debug] [2020-04-27T15:15:50.670Z] ----------------------------------------------------------------------
-[debug] [2020-04-27T15:15:50.673Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
-[debug] [2020-04-27T15:15:50.673Z] CLI Version:   8.0.3
-[debug] [2020-04-27T15:15:50.674Z] Platform:      win32
-[debug] [2020-04-27T15:15:50.674Z] Node Version:  v10.16.3
-[debug] [2020-04-27T15:15:51.086Z] Time:          Mon Apr 27 2020 20:45:50 GMT+0530 (India Standard Time)
-[debug] [2020-04-27T15:15:51.086Z] ----------------------------------------------------------------------
-[debug] [2020-04-27T15:15:51.086Z] 
-[debug] [2020-04-27T15:15:52.064Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-04-27T15:15:52.064Z] > authorizing via signed-in user
-[debug] [2020-04-27T15:15:52.064Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
-[debug] [2020-04-27T15:15:52.067Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2020-04-27T15:15:52.067Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2020-04-27T15:15:54.956Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 27 Apr 2020 15:16:40 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-04-27T15:15:55.151Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
+[debug] [2020-04-29T14:03:33.816Z] ----------------------------------------------------------------------
+[debug] [2020-04-29T14:03:33.818Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-04-29T14:03:33.818Z] CLI Version:   8.0.3
+[debug] [2020-04-29T14:03:33.818Z] Platform:      win32
+[debug] [2020-04-29T14:03:33.818Z] Node Version:  v10.16.3
+[debug] [2020-04-29T14:03:33.819Z] Time:          Wed Apr 29 2020 19:33:33 GMT+0530 (India Standard Time)
+[debug] [2020-04-29T14:03:33.819Z] ----------------------------------------------------------------------
+[debug] [2020-04-29T14:03:33.820Z] 
+[debug] [2020-04-29T14:03:33.828Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-29T14:03:33.828Z] > authorizing via signed-in user
+[debug] [2020-04-29T14:03:33.829Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
+[debug] [2020-04-29T14:03:33.831Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
  {"permissions":["firebase.projects.get"]}
-[debug] [2020-04-27T15:15:56.948Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 27 Apr 2020 15:16:42 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1351","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-04-27T15:15:56.949Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
+[debug] [2020-04-29T14:03:34.518Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 29 Apr 2020 14:04:21 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=237","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-29T14:03:34.521Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
  
-[debug] [2020-04-27T15:15:57.563Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 27 Apr 2020 15:16:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-29T14:03:35.225Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 29 Apr 2020 14:04:22 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] 
 [info] === Serving from 'C:\Users\manis\Internship\lastpass'...
 [info] 
-[debug] [2020-04-27T15:15:57.568Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
+[debug] [2020-04-29T14:03:35.228Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
  
-[debug] [2020-04-27T15:15:58.868Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 27 Apr 2020 15:16:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-29T14:03:36.337Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 29 Apr 2020 14:04:23 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
-[debug] [2020-04-28T04:26:37.998Z] ----------------------------------------------------------------------
-[debug] [2020-04-28T04:26:38.000Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
-[debug] [2020-04-28T04:26:38.000Z] CLI Version:   8.0.3
-[debug] [2020-04-28T04:26:38.000Z] Platform:      win32
-[debug] [2020-04-28T04:26:38.000Z] Node Version:  v10.16.3
-[debug] [2020-04-28T04:26:38.002Z] Time:          Tue Apr 28 2020 09:56:38 GMT+0530 (India Standard Time)
-[debug] [2020-04-28T04:26:38.002Z] ----------------------------------------------------------------------
-[debug] [2020-04-28T04:26:38.002Z] 
-[debug] [2020-04-28T04:26:38.061Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-04-28T04:26:38.061Z] > authorizing via signed-in user
-[debug] [2020-04-28T04:26:38.062Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
-[debug] [2020-04-28T04:26:38.065Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2020-04-28T04:26:38.065Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2020-05-01T10:40:31.470Z] ----------------------------------------------------------------------
+[debug] [2020-05-01T10:40:31.472Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-05-01T10:40:31.473Z] CLI Version:   8.0.3
+[debug] [2020-05-01T10:40:31.473Z] Platform:      win32
+[debug] [2020-05-01T10:40:31.473Z] Node Version:  v10.16.3
+[debug] [2020-05-01T10:40:31.514Z] Time:          Fri May 01 2020 16:10:31 GMT+0530 (India Standard Time)
+[debug] [2020-05-01T10:40:31.514Z] ----------------------------------------------------------------------
+[debug] [2020-05-01T10:40:31.514Z] 
+[debug] [2020-05-01T10:40:31.537Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-01T10:40:31.539Z] > authorizing via signed-in user
+[debug] [2020-05-01T10:40:31.540Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
+[debug] [2020-05-01T10:40:31.542Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-05-01T10:40:31.542Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2020-04-28T04:26:43.015Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 28 Apr 2020 04:27:28 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-04-28T04:26:43.599Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
+[debug] [2020-05-01T10:40:34.112Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 01 May 2020 10:41:23 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-01T10:40:34.124Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
  {"permissions":["firebase.projects.get"]}
-[debug] [2020-04-28T04:26:47.675Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 28 Apr 2020 04:27:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1382","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-04-28T04:26:47.675Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
+[debug] [2020-05-01T10:40:36.141Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 01 May 2020 10:41:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1407","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-01T10:40:36.142Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
  
-[debug] [2020-04-28T04:26:54.625Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 28 Apr 2020 04:27:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-01T10:40:36.850Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 01 May 2020 10:41:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] 
 [info] === Serving from 'C:\Users\manis\Internship\lastpass'...
 [info] 
-[debug] [2020-04-28T04:26:54.630Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
+[debug] [2020-05-01T10:40:36.878Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
  
-[debug] [2020-04-28T04:27:02.971Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 28 Apr 2020 04:27:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-01T10:40:38.023Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 01 May 2020 10:41:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2020-05-02T08:49:11.584Z] ----------------------------------------------------------------------
+[debug] [2020-05-02T08:49:11.586Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-05-02T08:49:11.587Z] CLI Version:   8.0.3
+[debug] [2020-05-02T08:49:11.587Z] Platform:      win32
+[debug] [2020-05-02T08:49:11.587Z] Node Version:  v10.16.3
+[debug] [2020-05-02T08:49:11.893Z] Time:          Sat May 02 2020 14:19:11 GMT+0530 (India Standard Time)
+[debug] [2020-05-02T08:49:11.893Z] ----------------------------------------------------------------------
+[debug] [2020-05-02T08:49:11.893Z] 
+[debug] [2020-05-02T08:49:11.905Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-02T08:49:11.906Z] > authorizing via signed-in user
+[debug] [2020-05-02T08:49:11.906Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
+[debug] [2020-05-02T08:49:11.908Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-05-02T08:49:11.909Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-05-02T08:49:14.000Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 02 May 2020 08:50:04 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-02T08:49:14.055Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-05-02T08:49:17.452Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 02 May 2020 08:50:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1397","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-02T08:49:17.453Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
+ 
+[debug] [2020-05-02T08:49:21.520Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 02 May 2020 08:50:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Serving from 'C:\Users\manis\Internship\lastpass'...
+[info] 
+[debug] [2020-05-02T08:49:21.524Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
+ 
+[debug] [2020-05-02T08:49:22.667Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 02 May 2020 08:50:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5005
+[debug] [2020-05-03T01:21:35.639Z] ----------------------------------------------------------------------
+[debug] [2020-05-03T01:21:35.641Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-05-03T01:21:35.641Z] CLI Version:   8.0.3
+[debug] [2020-05-03T01:21:35.641Z] Platform:      win32
+[debug] [2020-05-03T01:21:35.641Z] Node Version:  v10.16.3
+[debug] [2020-05-03T01:21:35.643Z] Time:          Sun May 03 2020 06:51:35 GMT+0530 (India Standard Time)
+[debug] [2020-05-03T01:21:35.643Z] ----------------------------------------------------------------------
+[debug] [2020-05-03T01:21:35.643Z] 
+[debug] [2020-05-03T01:21:35.705Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-03T01:21:35.706Z] > authorizing via signed-in user
+[debug] [2020-05-03T01:21:35.706Z] [iam] checking project lastpass-e39d8 for permissions ["firebase.projects.get"]
+[debug] [2020-05-03T01:21:35.708Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-05-03T01:21:35.708Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-05-03T01:21:36.198Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 01:22:27 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-03T01:21:36.468Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lastpass-e39d8:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-05-03T01:21:38.909Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 01:22:30 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1745","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-03T01:21:38.910Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8  
+ 
+[debug] [2020-05-03T01:21:39.690Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 01:22:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Serving from 'C:\Users\manis\Internship\lastpass'...
+[info] 
+[debug] [2020-05-03T01:21:39.694Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lastpass-e39d8/webApps/-/config  
+ 
+[debug] [2020-05-03T01:21:41.063Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 01:22:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
