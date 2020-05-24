@@ -1,9 +1,10 @@
-import {firebaseConfig} from './config.js';
+import firebaseConfig from './config';
+import * as Fuse from '../node_modules/fuse.js/dist/fuse';
+
 (
   document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
       const profilePicture = document.getElementById('profile-picture');
-      const userName = document.getElementById('user-name');
       const emailId = document.getElementById('email-id');
       const settingsMenu = document.getElementById('settings-menu');
       const logout = document.getElementById('logout');
@@ -16,6 +17,7 @@ import {firebaseConfig} from './config.js';
           sitePassword: '',
           notes: '',
         },
+        filteredPasswords: [],
         passwords: [],
         passwordID: null,
       };
@@ -38,7 +40,11 @@ import {firebaseConfig} from './config.js';
         notesInput: document.getElementById('notes-input'),
         notesInputHelp: document.getElementById('notes-input-help'),
         savePassword: document.getElementById('save-password'),
+        search: document.getElementById('search'),
         init: () => {
+          view.search.oninput = () => {
+            controller.handleSearchInput();
+          },
           view.urlInput.oninput = () => {
             controller.handleUrlInput(view.urlInput.value);
           },
@@ -72,35 +78,32 @@ import {firebaseConfig} from './config.js';
         },
         render: () => {
           profilePicture.src = model.user.photoURL;
-          userName.innerHTML = model.user.displayName;
           emailId.innerHTML = model.user.email;
         },
       };
       const displayView = {
-        passwordDisplayList1: document.getElementById('password-display-list1'),
-        passwordDisplayList2: document.getElementById('password-display-list2'),
-        passwordDisplayList3: document.getElementById('password-display-list3'),
+        passwordDisplayList: document.getElementById('password-display-list'),
         init: () => {
+          controller.handleSearchInput();
+          displayView.render();
         },
         render: () => {
-          displayView.passwordDisplayList1.innerHTML = ``;
-          displayView.passwordDisplayList2.innerHTML = ``;
-          displayView.passwordDisplayList3.innerHTML = ``;
-          model.passwords.forEach((password) => {
+          displayView.passwordDisplayList.innerHTML = ``;
+          model.filteredPasswords.forEach((password) => {
             const card = document.createElement('div');
             card.classList.add('card');
             const cardContent = document.createElement('div');
             cardContent.classList.add('card-content');
             cardContent.innerHTML = `
               <p class="title">
-                ${password.name}
+                ${password.username}
               </p>
               <p class="subtitle">
-                ${password.username}
+                ${password.name}
               </p>
               `;
             const launchButton = document.createElement('button');
-            launchButton.classList.add('launch-button', 'is-info', 'button');
+            launchButton.classList.add('launch-button', 'is-success', 'button');
             launchButton.innerHTML = `
               <span class="icon">
                 <i class="fas fa-link"></i>
@@ -148,13 +151,7 @@ import {firebaseConfig} from './config.js';
             footer.appendChild(buttonTagDelete);
             card.appendChild(cardContent);
             card.appendChild(footer);
-            if (model.passwords.length <= 10) {
-              displayView.passwordDisplayList1.appendChild(card);
-            } else if (10 < model.passwords.length <=20) {
-              displayView.passwordDisplayList2.appendChild(card);
-            } else {
-              displayView.passwordDisplayList3.appendChild(card);
-            }
+            displayView.passwordDisplayList.appendChild(card);
             card.onmouseover = () => {
               launchButton.classList.remove('launch-button');
             };
@@ -168,6 +165,24 @@ import {firebaseConfig} from './config.js';
         },
       };
       const controller = {
+        handleSearchInput: () => {
+          const fuse = new Fuse(model.passwords, {
+            keys: ['name', 'username'],
+          });
+          if (view.search.value) {
+            const passwords = [];
+            fuse.search(view.search.value).forEach((searchPassword) => {
+              passwords.push(searchPassword.item);
+            });
+            controller.setFilteredPasswords(passwords);
+          } else {
+            controller.setFilteredPasswords(model.passwords);
+          }
+        },
+        setFilteredPasswords: (passwords) => {
+          model.filteredPasswords = passwords;
+          displayView.render();
+        },
         handleNotesInput: (name) => {
           if (controller.validateNotes(name)) {
             view.notesInput.classList.add('is-success');
@@ -520,7 +535,7 @@ import {firebaseConfig} from './config.js';
         },
         setPassword: (passwords) => {
           model.passwords = passwords;
-          displayView.render();
+          displayView.init();
         },
         init: () => {
           db.collection('storePassword').onSnapshot(
@@ -538,6 +553,7 @@ import {firebaseConfig} from './config.js';
               (err) => {
                 alert(err);
               });
+          displayView.init();
         },
       };
       firebase.initializeApp(firebaseConfig);

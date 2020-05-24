@@ -1,4 +1,4 @@
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyCf2tK8OJqQTOLNfkzfFDOXnnZNYs-hbZQ',
   authDomain: 'lastpass-e39d8.firebaseapp.com',
   databaseURL: 'https://lastpass-e39d8.firebaseio.com',
@@ -7,3 +7,4 @@ export const firebaseConfig = {
   messagingSenderId: '623457979411',
   appId: '1:623457979411:web:832fde345bafa043dc43e6',
 };
+export default firebaseConfig;

@@ -1,4 +1,4 @@
-import {firebaseConfig} from './config.js';
+import firebaseConfig from './config.js';
 (
   document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
